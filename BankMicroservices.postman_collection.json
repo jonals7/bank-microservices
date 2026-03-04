@@ -1,0 +1,306 @@
+{
+  "info": {
+    "name": "Bank Microservices API",
+    "description": "Collection for customer-service and account-service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "customer_url", "value": "http://localhost:8080" },
+    { "key": "account_url",  "value": "http://localhost:8081" }
+  ],
+  "item": [
+    {
+      "name": "Customer Service",
+      "item": [
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "url": "{{customer_url}}/api/v1/customers"
+          }
+        },
+        {
+          "name": "Get Customer by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{customer_url}}/api/v1/customers/1"
+          }
+        },
+        {
+          "name": "Create Customer - Jose Lema",
+          "request": {
+            "method": "POST",
+            "url": "{{customer_url}}/api/v1/customers",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jose Lema\",\n  \"gender\": \"Male\",\n  \"age\": 30,\n  \"identification\": \"1001\",\n  \"address\": \"Otavalo sn y principal\",\n  \"phone\": \"098254785\",\n  \"password\": \"1234\",\n  \"status\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Customer - Marianela Montalvo",
+          "request": {
+            "method": "POST",
+            "url": "{{customer_url}}/api/v1/customers",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marianela Montalvo\",\n  \"gender\": \"Female\",\n  \"age\": 28,\n  \"identification\": \"1002\",\n  \"address\": \"Amazonas y NNUU\",\n  \"phone\": \"097548965\",\n  \"password\": \"5678\",\n  \"status\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Customer - Juan Osorio",
+          "request": {
+            "method": "POST",
+            "url": "{{customer_url}}/api/v1/customers",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan Osorio\",\n  \"gender\": \"Male\",\n  \"age\": 35,\n  \"identification\": \"1003\",\n  \"address\": \"13 junio y Equinoccial\",\n  \"phone\": \"098874587\",\n  \"password\": \"1245\",\n  \"status\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "url": "{{customer_url}}/api/v1/customers/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jose Lema Updated\",\n  \"gender\": \"Male\",\n  \"age\": 31,\n  \"identification\": \"1001\",\n  \"address\": \"Nueva Direccion 123\",\n  \"phone\": \"098254785\",\n  \"password\": \"1234\",\n  \"status\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "url": "{{customer_url}}/api/v1/customers/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account Service - Accounts",
+      "item": [
+        {
+          "name": "Get All Accounts",
+          "request": {
+            "method": "GET",
+            "url": "{{account_url}}/api/v1/accounts"
+          }
+        },
+        {
+          "name": "Get Account by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{account_url}}/api/v1/accounts/1"
+          }
+        },
+        {
+          "name": "Create Account - Jose Lema Ahorro",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/accounts",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"478758\",\n  \"accountType\": \"Ahorro\",\n  \"initialBalance\": 2000.00,\n  \"status\": true,\n  \"customerId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Account - Marianela Corriente",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/accounts",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"225487\",\n  \"accountType\": \"Corriente\",\n  \"initialBalance\": 100.00,\n  \"status\": true,\n  \"customerId\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Account - Juan Osorio Ahorro",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/accounts",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"495878\",\n  \"accountType\": \"Ahorro\",\n  \"initialBalance\": 0.00,\n  \"status\": true,\n  \"customerId\": 3\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Account - Marianela Ahorro 2",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/accounts",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"496825\",\n  \"accountType\": \"Ahorro\",\n  \"initialBalance\": 540.00,\n  \"status\": true,\n  \"customerId\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Account - Jose Lema Corriente (Use Case 3)",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/accounts",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"585545\",\n  \"accountType\": \"Corriente\",\n  \"initialBalance\": 1000.00,\n  \"status\": true,\n  \"customerId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Account",
+          "request": {
+            "method": "PUT",
+            "url": "{{account_url}}/api/v1/accounts/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"478758\",\n  \"accountType\": \"Ahorro\",\n  \"initialBalance\": 2000.00,\n  \"status\": true,\n  \"customerId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Account",
+          "request": {
+            "method": "DELETE",
+            "url": "{{account_url}}/api/v1/accounts/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account Service - Movements",
+      "item": [
+        {
+          "name": "Get All Movements",
+          "request": {
+            "method": "GET",
+            "url": "{{account_url}}/api/v1/movements"
+          }
+        },
+        {
+          "name": "Get Movement by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{account_url}}/api/v1/movements/1"
+          }
+        },
+        {
+          "name": "DEBIT - Retiro 575 cuenta 478758",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/movements",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": 1,\n  \"movementType\": \"DEBIT\",\n  \"amount\": 575.00\n}"
+            }
+          }
+        },
+        {
+          "name": "CREDIT - Deposito 600 cuenta 225487",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/movements",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": 2,\n  \"movementType\": \"CREDIT\",\n  \"amount\": 600.00\n}"
+            }
+          }
+        },
+        {
+          "name": "CREDIT - Deposito 150 cuenta 495878",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/movements",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": 3,\n  \"movementType\": \"CREDIT\",\n  \"amount\": 150.00\n}"
+            }
+          }
+        },
+        {
+          "name": "DEBIT - Retiro 540 cuenta 496825",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/movements",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": 4,\n  \"movementType\": \"DEBIT\",\n  \"amount\": 540.00\n}"
+            }
+          }
+        },
+        {
+          "name": "DEBIT - Saldo insuficiente (F3)",
+          "request": {
+            "method": "POST",
+            "url": "{{account_url}}/api/v1/movements",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": 3,\n  \"movementType\": \"DEBIT\",\n  \"amount\": 9999.00\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Movement",
+          "request": {
+            "method": "DELETE",
+            "url": "{{account_url}}/api/v1/movements/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Statement - Marianela Feb 2022 (F4)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{account_url}}/reports/2?startDate=2022-02-01&endDate=2022-02-28",
+              "host": ["{{account_url}}"],
+              "path": ["reports", "2"],
+              "query": [
+                { "key": "startDate", "value": "2022-02-01" },
+                { "key": "endDate",   "value": "2022-02-28" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Statement - Jose Lema Feb 2022",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{account_url}}/reports/1?startDate=2022-02-01&endDate=2022-02-28",
+              "host": ["{{account_url}}"],
+              "path": ["reports", "1"],
+              "query": [
+                { "key": "startDate", "value": "2022-02-01" },
+                { "key": "endDate",   "value": "2022-02-28" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+
+  # ── PostgreSQL for customer-service ─────────────────────────────────────────
+  postgres-customer:
+    image: postgres:16-alpine
+    container_name: postgres-customer
+    environment:
+      POSTGRES_DB: customerdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_customer_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d customerdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── PostgreSQL for account-service ──────────────────────────────────────────
+  postgres-account:
+    image: postgres:16-alpine
+    container_name: postgres-account
+    environment:
+      POSTGRES_DB: accountdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_account_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d accountdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── customer-service ────────────────────────────────────────────────────────
+  customer-service:
+    build:
+      context: ./customer-service
+      dockerfile: Dockerfile
+    container_name: customer-service
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: postgres-customer
+      DB_PORT: 5432
+      DB_NAME: customerdb
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      postgres-customer:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # ── account-service ─────────────────────────────────────────────────────────
+  account-service:
+    build:
+      context: ./account-service
+      dockerfile: Dockerfile
+    container_name: account-service
+    ports:
+      - "8081:8081"
+    environment:
+      DB_HOST: postgres-account
+      DB_PORT: 5432
+      DB_NAME: accountdb
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      CUSTOMER_SERVICE_URL: http://customer-service:8080
+    depends_on:
+      postgres-account:
+        condition: service_healthy
+      customer-service:
+        condition: service_started
+
+volumes:
+  postgres_customer_data:
+  postgres_account_data:

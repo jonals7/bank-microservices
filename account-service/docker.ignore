@@ -1,0 +1,7 @@
+target/
+src/test/
+*.log
+.git
+.gitignore
+README.md
+.DS_Store

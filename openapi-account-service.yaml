@@ -1,0 +1,637 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8081
+  description: Generated server url
+paths:
+  /api/v1/movements/{id}:
+    get:
+      tags:
+      - movement-controller
+      operationId: findById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoMovementResponseDto"
+    put:
+      tags:
+      - movement-controller
+      operationId: update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MovementRequestDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoMovementResponseDto"
+    delete:
+      tags:
+      - movement-controller
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "204":
+          description: No Content
+  /api/v1/accounts/{id}:
+    get:
+      tags:
+      - account-controller
+      operationId: findById_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoAccountResponseDto"
+    put:
+      tags:
+      - account-controller
+      operationId: update_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountRequestDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoAccountResponseDto"
+    delete:
+      tags:
+      - account-controller
+      operationId: delete_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "204":
+          description: No Content
+  /api/v1/movements:
+    get:
+      tags:
+      - movement-controller
+      operationId: findAll
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoObject"
+    post:
+      tags:
+      - movement-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MovementRequestDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoMovementResponseDto"
+  /api/v1/accounts:
+    get:
+      tags:
+      - account-controller
+      operationId: findAll_1
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoObject"
+    post:
+      tags:
+      - account-controller
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountRequestDto"
+        required: true
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoAccountResponseDto"
+  /reports/{customerId}:
+    get:
+      tags:
+      - movement-controller
+      operationId: getStatement
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: startDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      responses:
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "409":
+          description: Conflict
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "500":
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoVoid"
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiResponseDtoStatementDto"
+components:
+  schemas:
+    ApiResponseDtoVoid:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        data:
+          type: object
+    MovementRequestDto:
+      type: object
+      properties:
+        accountId:
+          type: integer
+          format: int64
+        movementType:
+          type: string
+        amount:
+          type: number
+      required:
+      - accountId
+      - amount
+      - movementType
+    ApiResponseDtoMovementResponseDto:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        data:
+          $ref: "#/components/schemas/MovementResponseDto"
+    MovementResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date-time
+        movementType:
+          type: string
+        amount:
+          type: number
+        balance:
+          type: number
+        accountId:
+          type: integer
+          format: int64
+    AccountRequestDto:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        accountType:
+          type: string
+        initialBalance:
+          type: number
+        status:
+          type: boolean
+        customerId:
+          type: integer
+          format: int64
+      required:
+      - accountNumber
+      - accountType
+      - customerId
+      - initialBalance
+      - status
+    AccountResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        accountNumber:
+          type: string
+        accountType:
+          type: string
+        initialBalance:
+          type: number
+        currentBalance:
+          type: number
+        status:
+          type: boolean
+        customerId:
+          type: integer
+          format: int64
+    ApiResponseDtoAccountResponseDto:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        data:
+          $ref: "#/components/schemas/AccountResponseDto"
+    AccountStatement:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        accountType:
+          type: string
+        currentBalance:
+          type: number
+        status:
+          type: boolean
+        movements:
+          type: array
+          items:
+            $ref: "#/components/schemas/MovementDetail"
+    ApiResponseDtoStatementDto:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        data:
+          $ref: "#/components/schemas/StatementDto"
+    MovementDetail:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        movementType:
+          type: string
+        amount:
+          type: number
+        balanceAfter:
+          type: number
+    StatementDto:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        customerName:
+          type: string
+        accounts:
+          type: array
+          items:
+            $ref: "#/components/schemas/AccountStatement"
+    ApiResponseDtoObject:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        data:
+          type: object
