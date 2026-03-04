@@ -1,0 +1,16 @@
+# Maven
+target/
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Docker volumes
+postgres-data/
+
+# Logs
+*.log
+*.txt
