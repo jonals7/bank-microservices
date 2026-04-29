@@ -35,7 +35,7 @@ REST API built with Spring Boot + WebFlux + R2DBC, split into two microservices 
 ## Prerequisites
 
 - Docker Desktop installed and running
-- Ports 8080, 8081, 5432, 5433 available
+- Ports 8080, 8081, 5432, 5433 
 
 ## Running the Project
 
