@@ -42,7 +42,7 @@ REST API built with Spring Boot + WebFlux + R2DBC, split into two microservices 
 Clone the repository and run from the root folder:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/jonals7/bank-microservices.git
 cd ntt-test
 
 # Build images and start all containers
